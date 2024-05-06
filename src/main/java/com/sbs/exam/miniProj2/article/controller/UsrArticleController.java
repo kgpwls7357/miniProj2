@@ -12,10 +12,13 @@ import java.util.List;
 @Controller
 public class UsrArticleController {
 
+    //인스턴스 변수 시작
     int articleLastId;
 
     private List<Article> articles;
+    //인스턴스 변수 끝
 
+    //생성자
     public UsrArticleController(){
         articles = new ArrayList<>();
         articleLastId = 0;
@@ -23,6 +26,7 @@ public class UsrArticleController {
         makeTestDate();
     }
 
+    //서비스 메서드 시작
     private void makeTestDate() {
         for(int i = 1; i <= 10; i++){
 
@@ -31,6 +35,15 @@ public class UsrArticleController {
 
             writeArticle(title, body);
         }
+    }
+
+    private Article getArticle(int id) {
+        for(Article article : articles){
+            if(article.getId() == id){
+                return article;
+            }
+        }
+        return null;
     }
 
 
@@ -44,6 +57,14 @@ public class UsrArticleController {
         return article;
     }
 
+    private void deleteArticle(int id) {
+        Article article = getArticle(id);
+
+        articles.remove(article);
+    }
+    // 서비스 메서드 끝
+
+    //액션 메서드 시작
     @RequestMapping("/usr/article/doAdd")
     @ResponseBody
     public Article doAdd(String title, String body) {
@@ -58,5 +79,24 @@ public class UsrArticleController {
     public List<Article> getArticles() {
         return articles;
     }
+
+    @RequestMapping("/usr/article/doDelete")
+    @ResponseBody
+    public String doDelete(int id) {
+        Article article = getArticle(id);
+
+        if(article == null){
+            return id + "번 게시물이 존재하지 않습니다.";
+        }
+
+        deleteArticle(id);
+
+        return id + "번 게시물을 삭제하였습니다.";
+    }
+
+
+    //액션 메서드 끝
+
+
 
 }
