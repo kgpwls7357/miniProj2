@@ -2,21 +2,23 @@ package com.sbs.exam.miniProj2.article.service;
 
 import com.sbs.exam.miniProj2.article.repository.ArticleRepository;
 import com.sbs.exam.miniProj2.article.vo.Article;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class ArticleService {
     private ArticleRepository articleRepository;
-
     public ArticleService(ArticleRepository articleRepository) {
         this.articleRepository = articleRepository;
     }
 
 
-    public Article writeArticle(String title, String body) {
-        return articleRepository.writeArticle(title, body);
+    public int writeArticle(String title, String body) {
+        articleRepository.writeArticle(title, body);
+        return articleRepository.getLastInsertId();
     }
+
     public List<Article> getArticles() {
         return articleRepository.getArticles();
     }

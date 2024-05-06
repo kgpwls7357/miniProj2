@@ -1,17 +1,19 @@
 package com.sbs.exam.miniProj2.article.repository;
 
 import com.sbs.exam.miniProj2.article.vo.Article;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
+
 @Mapper
 public interface ArticleRepository {
-    // INSERT INTO article SET regDate = NOW(), updateDate = NOW(), title = ?, `body` = ?
-    public Article writeArticle(String title, String body);
+
+
+    @Insert("INSERT INTO article SET regDate = NOW(), updateDate = NOW(), title = #{title}, `body` = #{body}")
+    public void writeArticle(String title, String body);
+
+
     @Select("SELECT * FROM article WHERE id = #{id}")
     public Article getArticle(int id);
 
@@ -21,6 +23,11 @@ public interface ArticleRepository {
     @Select("SELECT * FROM article ORDER BY id DESC")
     public List<Article> getArticles();
 
+
     @Update("UPDATE article SET title = #{title}, `body` = #{body}, updateDate = NOW() WHERE id = #{id}")
     public void modifyArticle(int id, String title, String body);
+
+
+    @Select("SELECT LAST_INSERT_ID()")
+    public int getLastInsertId();
 }
