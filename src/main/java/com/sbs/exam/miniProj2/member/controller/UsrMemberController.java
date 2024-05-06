@@ -2,6 +2,7 @@ package com.sbs.exam.miniProj2.member.controller;
 
 import com.sbs.exam.miniProj2.member.service.MemberService;
 import com.sbs.exam.miniProj2.member.vo.Member;
+import com.sbs.exam.miniProj2.util.Ut;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,36 +20,33 @@ public class UsrMemberController {
                          String cellphoneNo, String email) {
         int id = memberService.join(loginId, loginPw, name, nickname, cellphoneNo, email);
 
-        if( loginId == null ) {
+        if (Ut.empty(loginId)) {
             return "loginId(을)를 입력 해주세요.";
         }
 
-        if( loginPw == null ) {
+        if (Ut.empty(loginPw)) {
             return "loginPw(을)를 입력 해주세요.";
         }
 
-        if( name == null ) {
+        if (Ut.empty(name)) {
             return "name(을)를 입력 해주세요.";
         }
 
-        if( nickname == null ) {
+        if (Ut.empty(nickname)) {
             return "nickname(을)를 입력 해주세요.";
         }
 
-        if( cellphoneNo == null ) {
+        if (Ut.empty(cellphoneNo)) {
             return "cellphoneNo(을)를 입력 해주세요.";
         }
 
-        if( email == null ) {
+        if (Ut.empty(email)) {
             return "email(을)를 입력 해주세요.";
         }
-
         if ( id == -1 ) {
             return "해당 로그인아이디는 이미 사용중입니다.";
         }
-
         Member member = memberService.getMemberById(id);
-
         return member;
     }
 }
