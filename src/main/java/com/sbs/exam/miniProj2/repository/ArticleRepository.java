@@ -1,6 +1,6 @@
-package com.sbs.exam.miniProj2.article.repository;
+package com.sbs.exam.miniProj2.repository;
 
-import com.sbs.exam.miniProj2.article.vo.Article;
+import com.sbs.exam.miniProj2.vo.Article;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

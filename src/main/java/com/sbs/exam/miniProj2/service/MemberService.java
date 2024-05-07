@@ -1,7 +1,7 @@
-package com.sbs.exam.miniProj2.member.service;
+package com.sbs.exam.miniProj2.service;
 
 import com.sbs.exam.miniProj2.member.repository.MemberRepository;
-import com.sbs.exam.miniProj2.member.vo.Member;
+import com.sbs.exam.miniProj2.vo.Member;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,8 +19,8 @@ public class MemberService {
         if( oldMember != null ) {
             return -1;
         }
-
-        // 이름 + 이메일 중복체크
+//
+//        // 이름 + 이메일 중복체크
         oldMember = getMemberByNameAndEmail(name, email);
 
         if( oldMember != null ) {

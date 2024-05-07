@@ -1,6 +1,6 @@
-package com.sbs.exam.miniProj2.home.controller;
+package com.sbs.exam.miniProj2.controller;
 
-import com.sbs.exam.miniProj2.article.vo.Article;
+import com.sbs.exam.miniProj2.vo.Article;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

@@ -1,7 +1,7 @@
-package com.sbs.exam.miniProj2.article.controller;
+package com.sbs.exam.miniProj2.controller;
 
-import com.sbs.exam.miniProj2.article.service.ArticleService;
-import com.sbs.exam.miniProj2.article.vo.Article;
+import com.sbs.exam.miniProj2.service.ArticleService;
+import com.sbs.exam.miniProj2.vo.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

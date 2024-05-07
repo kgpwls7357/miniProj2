@@ -1,4 +1,4 @@
-package com.sbs.exam.miniProj2.member.vo;
+package com.sbs.exam.miniProj2.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,6 +1,6 @@
-package com.sbs.exam.miniProj2.member.repository;
+package com.sbs.exam.miniProj2.repository;
 
-import com.sbs.exam.miniProj2.member.vo.Member;
+import com.sbs.exam.miniProj2.vo.Member;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

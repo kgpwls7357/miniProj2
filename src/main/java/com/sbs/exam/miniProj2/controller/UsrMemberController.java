@@ -1,7 +1,7 @@
-package com.sbs.exam.miniProj2.member.controller;
+package com.sbs.exam.miniProj2.controller;
 
-import com.sbs.exam.miniProj2.member.service.MemberService;
-import com.sbs.exam.miniProj2.member.vo.Member;
+import com.sbs.exam.miniProj2.service.MemberService;
+import com.sbs.exam.miniProj2.vo.Member;
 import com.sbs.exam.miniProj2.util.Ut;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

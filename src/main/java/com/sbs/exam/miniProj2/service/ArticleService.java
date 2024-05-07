@@ -1,10 +1,9 @@
-package com.sbs.exam.miniProj2.article.service;
+package com.sbs.exam.miniProj2.service;
 
-import com.sbs.exam.miniProj2.article.repository.ArticleRepository;
-import com.sbs.exam.miniProj2.article.vo.Article;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.sbs.exam.miniProj2.repository.ArticleRepository;
+import com.sbs.exam.miniProj2.vo.Article;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
+
 import java.util.List;
 @Service
 public class ArticleService {
