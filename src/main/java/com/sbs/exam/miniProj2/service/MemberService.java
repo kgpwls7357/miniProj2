@@ -1,6 +1,6 @@
 package com.sbs.exam.miniProj2.service;
 
-import com.sbs.exam.miniProj2.member.repository.MemberRepository;
+import com.sbs.exam.miniProj2.repository.MemberRepository;
 import com.sbs.exam.miniProj2.vo.Member;
 import org.springframework.stereotype.Service;
 
