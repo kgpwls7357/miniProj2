@@ -3,6 +3,7 @@ package com.sbs.exam.miniProj2.controller;
 import com.sbs.exam.miniProj2.service.MemberService;
 import com.sbs.exam.miniProj2.vo.Member;
 import com.sbs.exam.miniProj2.util.Ut;
+import com.sbs.exam.miniProj2.vo.ResultData;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,43 +17,43 @@ public class UsrMemberController {
 
     @RequestMapping("/usr/member/doJoin")
     @ResponseBody
-    public Object doJoin(String loginId, String loginPw, String name, String nickname,
-                         String cellphoneNo, String email) {
-        int id = memberService.join(loginId, loginPw, name, nickname, cellphoneNo, email);
+    public ResultData doJoin(String loginId, String loginPw, String name, String nickname,
+                             String cellphoneNo, String email) {
+        ResultData id = memberService.join(loginId, loginPw, name, nickname, cellphoneNo, email);
 
         if (Ut.empty(loginId)) {
-            return "loginId(을)를 입력 해주세요.";
+            return ResultData.from("F-1","loginId(을)를 입력 해주세요.");
         }
 
         if (Ut.empty(loginPw)) {
-            return "loginPw(을)를 입력 해주세요.";
+            return ResultData.from("F-2","loginPw(을)를 입력 해주세요.");
         }
 
         if (Ut.empty(name)) {
-            return "name(을)를 입력 해주세요.";
+            return ResultData.from("F-3","name(을)를 입력 해주세요.");
         }
 
         if (Ut.empty(nickname)) {
-            return "nickname(을)를 입력 해주세요.";
+            return ResultData.from("F-4","nickname(을)를 입력 해주세요.");
         }
 
         if (Ut.empty(cellphoneNo)) {
-            return "cellphoneNo(을)를 입력 해주세요.";
+            return ResultData.from("F-5","cellphoneNo(을)를 입력 해주세요.");
         }
 
         if (Ut.empty(email)) {
-            return "email(을)를 입력 해주세요.";
+            return ResultData.from("F-6","email(을)를 입력 해주세요.");
         }
 
-        if ( id == -1 ) {
-            return Ut.f("해당 로그인아이디(%s)는 이미 사용중입니다.", loginId);
+        ResultData joinRd = memberService.join(loginId, loginPw, name, nickname,cellphoneNo, email);
+        //resultCode
+
+        if ( joinRd.isFail() ) {
+            return joinRd;
         }
 
-        if ( id == -2 ) {
-            return Ut.f("해당 이름(%s)과 이메일(%s)은 이미 사용중입니다.", name, email);
-        }
+        Member member = memberService.getMemberById((int)joinRd.getData1());
 
-        Member member = memberService.getMemberById(id);
-        return member;
+        return ResultData.newData(joinRd, member);
     }
 }
